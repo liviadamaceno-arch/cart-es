@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Recipe Cards - Red Edition</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #0d0202; /* Very dark red/black background */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            color: #333;
+        }
+
+        .circulo-central {
+            width: 400px;
+            height: 400px;
+            /* Intense Red Gradient */
+            background: radial-gradient(circle, #e74c3c 0%, #8b0000 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            perspective: 1200px;
+            box-shadow: 0 0 80px rgba(231, 76, 60, 0.3);
+        }
+
+        .card {
+            width: 180px;
+            height: 260px;
+            /* White Cards */
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+            border-radius: 15px;
+            position: absolute;
+            border: 1px solid rgba(139, 0, 0, 0.1);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+            cursor: pointer;
+            transform-style: preserve-3d;
+            box-shadow: -5px 10px 30px rgba(0,0,0,0.4);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Card Content Styling */
+        .card h3 {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #c0392b; /* Strong Red */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid rgba(192, 57, 43, 0.2);
+            padding-bottom: 5px;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 0.7rem;
+            line-height: 1.4;
+            color: #641e16;
+        }
+
+        .card ul {
+            margin: 0;
+            padding: 0 0 0 15px;
+            font-size: 0.65rem;
+            color: #922b21;
+        }
+
+        /* --- INITIAL STATE --- */
+        .card:nth-child(1) { 
+            transform: translate(-30px, 30px) rotateZ(-30deg) translateZ(0); 
+            z-index: 1;
+        }
+
+        .card:nth-child(2) { 
+            transform: translate(0px, 0px) rotateZ(-30deg) translateZ(30px); 
+            z-index: 2;
+        }
+
+        .card:nth-child(3) { 
+            transform: translate(30px, -30px) rotateZ(-30deg) translateZ(60px); 
+            z-index: 3;
+        }
+
+        /* --- HOVER CONTAINER --- */
+        .circulo-central:hover .card:nth-child(1) {
+            transform: translateX(-250px) translateZ(50px) rotateZ(0deg) rotateY(10deg);
+        }
+
+        .circulo-central:hover .card:nth-child(2) {
+            transform: translateZ(120px) scale(1.1) rotateZ(0deg);
+            border-color: #e74c3c;
+        }
+
+        .circulo-central:hover .card:nth-child(3) {
+            transform: translateX(250px) translateZ(50px) rotateZ(0deg) rotateY(-10deg);
+        }
+
+        /* --- INDIVIDUAL HOVER --- */
+        .card:hover {
+            border-color: #c0392b !important;
+            box-shadow: 0 0 40px rgba(192, 57, 43, 0.4) !important;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(192, 57, 43, 0.05);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="circulo-central">
+        <div class="card">
+            <h3>Fogo do Norte</h3>
+            <p>Para acelerar o metabolismo.</p>
+            <ul>
+                <li>Chá de hibisco concentrado</li>
+                <li>Suco de cranberry</li>
+                <li>1 pitada de pimenta caiena</li>
+                <li>Rodela de toranja</li>
+            </ul>
+            <p style="font-style: italic; font-size: 0.6rem; margin-top: auto;">Sinta o calor da energia pura.</p>
+        </div>
+
+        <div class="card">
+            <h3>Rubi Matinal</h3>
+            <p>A força que seu dia precisa.</p>
+            <ul>
+                <li>Suco de beterraba e maçã</li>
+                <li>Gengibre fresco ralado</li>
+                <li>Sementes de romã</li>
+                <li>Gotas de limão siciliano</li>
+            </ul>
+            <p style="font-style: italic; font-size: 0.6rem; margin-top: auto;">Resistência e cor para sua rotina.</p>
+        </div>
+
+        <div class="card">
+            <h3>Eclipse Doce</h3>
+            <p>O equilíbrio entre doce e intenso.</p>
+            <ul>
+                <li>Framboesas esmagadas</li>
+                <li>Chocolate amargo 70%</li>
+                <li>Geleia de pimenta suave</li>
+                <li>Folhas de hortelã</li>
+            </ul>
+            <p style="font-style: italic; font-size: 0.6rem; margin-top: auto;">Uma explosão de sabor vibrante.</p>
+        </div>
+    </div>
+
+</body>
+</html>
